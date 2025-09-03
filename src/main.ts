@@ -10,7 +10,6 @@ const { HOST, PORT, PROXY_TARGET } = process.env
 const app = express()
 
 app.use(morgan('dev'))
-app.use(applicationRouter)
 app.use(
   cors({
     origin: '*',
@@ -18,6 +17,7 @@ app.use(
     allowedHeaders: ['*'],
   })
 )
+app.use(applicationRouter)
 
 app.listen(PORT, HOST, () => {
   const publicUrl = `http://${HOST}:${PORT}`
