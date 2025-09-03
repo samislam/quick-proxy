@@ -1,22 +1,19 @@
 import './server/read-env'
-import cors from 'cors'
 import chalk from 'chalk'
 import morgan from 'morgan'
 import express from 'express'
 import { applicationRouter } from './routing'
+import { corsMiddleware } from '@/middlewares/cors.middleware'
 
 const { HOST, PORT, PROXY_TARGET } = process.env
 
 const app = express()
 
 app.use(morgan('dev'))
-app.use(
-  cors({
-    origin: '*',
-    methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH', 'OPTIONS'],
-    allowedHeaders: ['*'],
-  })
-)
+
+app.use(corsMiddleware)
+
+app.options('*', corsMiddleware)
 app.use(applicationRouter)
 
 app.listen(PORT, HOST, () => {
