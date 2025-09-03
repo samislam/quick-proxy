@@ -17,6 +17,7 @@
   "packageManager": "pnpm@10.12.4",
   "dependencies": {
     "chalk": "^4.1.2",
+    "cors": "^2.8.5",
     "dotenv": "^16.6.1",
     "envalid": "^8.0.0",
     "express": "^5.1.0",
@@ -36,6 +37,7 @@
     "@clscripts/ts-patch": "^3.3.0",
     "@eslint/js": "^9.30.0",
     "@samislam/prettier-config": "^1.1.7",
+    "@types/cors": "^2.8.19",
     "@types/express": "^5.0.3",
     "@types/jest": "^29.5.14",
     "@types/morgan": "^1.9.10",

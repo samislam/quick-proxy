@@ -1,4 +1,5 @@
 import './server/read-env'
+import cors from 'cors'
 import chalk from 'chalk'
 import morgan from 'morgan'
 import express from 'express'
@@ -10,6 +11,13 @@ const app = express()
 
 app.use(morgan('dev'))
 app.use(applicationRouter)
+app.use(
+  cors({
+    origin: '*',
+    methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH', 'OPTIONS'],
+    allowedHeaders: ['*'],
+  })
+)
 
 app.listen(PORT, HOST, () => {
   const publicUrl = `http://${HOST}:${PORT}`
