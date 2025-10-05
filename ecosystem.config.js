@@ -2,14 +2,20 @@
 module.exports = {
   apps: [
     {
-      name: 'ayawifi-pos-proxy',
-      script: 'pnpm',
-      args: 'start',
-      instances: 1,
+      name: 'aya-companies-proxy',
+      script: './dist/src/main.js',
+      exec_mode: 'cluster',
+      instances: 'max',
       autorestart: true,
       watch: false,
-      max_memory_restart: '4G',
-      exec_mode: 'cluster',
+      max_memory_restart: '400M',
+      env: {
+        NODE_ENV: 'production',
+      },
+      error_file: '~/.pm2/logs/aya-companies-proxy-error.log',
+      out_file: '~/.pm2/logs/aya-companies-proxy-out.log',
+      merge_logs: true,
+      time: true,
     },
   ],
 }
