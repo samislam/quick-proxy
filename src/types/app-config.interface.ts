@@ -4,6 +4,8 @@ export interface AppConfigJsonSchema {
    * this proxy server
    */
   rule: 'allow' | 'deny'
+  /** If this service is running behind a proxy, ex: nginx or apache, set this to `true` */
+  trustProxy?: boolean
   ipv4_addresses: string[]
   /** Required */
   port: number
