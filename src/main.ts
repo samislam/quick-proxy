@@ -4,6 +4,7 @@ import morgan from 'morgan'
 import express from 'express'
 import { applicationRouter } from './routing'
 import { getConfig } from './server/read-config'
+import { globalErrorHandler } from './middlewares/global-error-handler.middleware'
 
 const { host, ipv4_addresses, port, proxyTarget, rule } = getConfig()
 
@@ -11,6 +12,7 @@ const app = express()
 
 app.use(morgan('dev'))
 app.use(applicationRouter)
+app.use(globalErrorHandler)
 
 app.listen(port, host, () => {
   const publicUrl = `http://${host}:${port}`
