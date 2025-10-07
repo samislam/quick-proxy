@@ -20,4 +20,4 @@ const env = cleanEnv(process.env, {
 
 Object.assign(process.env, env)
 
-console.log(chalk.italic(`~ using environment file ${dotenvFile}`))
+if (dotenvFile) console.log(chalk.italic(`~ using environment file ${dotenvFile}`))
