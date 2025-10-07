@@ -26,4 +26,4 @@ app.listen(port, host, () => {
 })
 
 const cr = (isAllowed: boolean) =>
-  isAllowed ? chalk.bold.greenBright('allowed') : chalk.bold.redBright('disallow')
+  isAllowed ? chalk.bold.greenBright('allowed') : chalk.bold.redBright('denied')

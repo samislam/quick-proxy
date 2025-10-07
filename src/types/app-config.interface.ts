@@ -3,7 +3,7 @@ export interface AppConfigJsonSchema {
    * Allow or disallow IP addresses in the `ipv4_addresses` property from accessing the routes on
    * this proxy server
    */
-  rule: 'allow' | 'disallow'
+  rule: 'allow' | 'deny'
   ipv4_addresses: string[]
   /** Required */
   port: number
