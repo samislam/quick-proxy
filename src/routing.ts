@@ -1,7 +1,7 @@
 import { Router } from 'express'
-import { proxyMiddleware } from './middlewares/proxy.middleware'
 import { IpFilter } from 'express-ipfilter'
 import { getConfig } from './server/read-config'
+import { proxyMiddleware } from './middlewares/proxy.middleware'
 
 export const applicationRouter = Router()
 
