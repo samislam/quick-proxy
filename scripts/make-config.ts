@@ -5,7 +5,7 @@ function setup() {
 host: 'localhost'
 port: 3000
 proxyTarget: 'https://google.com'
-rule: 'disallow'
+rule: 'deny'
 ipv4_addresses:
   - ''
 `

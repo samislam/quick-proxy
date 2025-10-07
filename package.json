@@ -10,9 +10,9 @@
     "dev": "tsx ./scripts/dev.ts",
     "lint": "tsx ./scripts/lint.ts",
     "clean": "tsx ./scripts/clean.ts",
-    "setup": "tsx ./scripts/setup.ts",
     "build": "tsx ./scripts/build.ts",
     "format": "tsx ./scripts/format.ts",
+    "make-config": "tsx ./scripts/make-config.ts",
     "start": "NODE_ENV=production node ./dist/src/main.js",
     "generateJsonSchema": "ts-json-schema-generator --path ./src/types/app-config.interface.ts --type AppConfigJsonSchema --out ./dist/app-config.json"
   },
@@ -23,6 +23,7 @@
     "dotenv": "^16.6.1",
     "envalid": "^8.0.0",
     "express": "^5.1.0",
+    "express-ipfilter": "^1.3.2",
     "http-proxy-middleware": "^3.0.5",
     "js-yaml": "^4.1.0",
     "lodash": "^4.17.21",
