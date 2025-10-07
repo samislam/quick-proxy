@@ -1,17 +1,18 @@
 import { IpDeniedError } from 'express-ipfilter'
-import { type ErrorRequestHandler } from 'express'
+import type { ErrorRequestHandler } from 'express'
 
-export const globalErrorHandler: ErrorRequestHandler = (err, req, res) => {
+export const globalErrorHandler: ErrorRequestHandler = (err, req, res, _next) => {
   if (err instanceof IpDeniedError) {
-    console.warn(`🚫 Access denied to IP ${err.extra.ip} on ${req.method} ${req.originalUrl}`)
-    // send a simple response
+    const ip = err.extra.ip
+
+    console.warn(`🚫 Access denied to IP ${ip} on ${req.method} ${req.originalUrl}`)
     return res.status(403).json({
       error: 'Forbidden',
-      reason: `Access denied for IP ${err.extra.ip}`,
+      reason: `Access denied for IP ${ip}`,
     })
   }
 
-  // fallback for other errors
+  // other errors -> your format
   console.error(err)
-  res.status(500).json({ error: 'Internal Server Error' })
+  return res.status(500).json({ error: 'Internal Server Error' })
 }
