@@ -10,13 +10,10 @@ console.log(
   chalk.cyanBright('Using environment file: '),
   chalk.bold.greenBright(dotenvFile ?? 'None!')
 )
-
-if (!dotenvFile) {
-  throw new Error(`❌ Environment file not found! please define one!`)
+if (dotenvFile) {
+  // throw new Error(`❌ Environment file not found! please define one!`)
+  configDotenv({ path: dotenvFile })
 }
-
-configDotenv({ path: dotenvFile })
-
 const env = cleanEnv(process.env, {
   CONFIG_FILE: str({ default: './app.config.yml' }),
 })
