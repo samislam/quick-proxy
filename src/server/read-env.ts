@@ -1,7 +1,7 @@
 import chalk from 'chalk'
 import { existsSync } from 'fs'
+import { cleanEnv, str } from 'envalid'
 import { config as configDotenv } from 'dotenv'
-import { cleanEnv, host, port, str } from 'envalid'
 
 const { NODE_ENV } = process.env
 const possibleEnvFiles = [`.env.${NODE_ENV}.local`, `.env.${NODE_ENV}`, '.env.local', '.env']
@@ -18,10 +18,7 @@ if (!dotenvFile) {
 configDotenv({ path: dotenvFile })
 
 const env = cleanEnv(process.env, {
-  PROXY_TARGET: str(),
-  HOST: host({ default: 'localhost' }),
-  PORT: port(),
-  NODE_ENV: str({ choices: ['development', 'production', 'test'], default: 'development' }),
+  CONFIG_FILE: str({ default: './app.config.yml' }),
 })
 
 Object.assign(process.env, env)
