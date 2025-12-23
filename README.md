@@ -22,7 +22,7 @@ PM2: an `ecosystem.config.js` file is included and ready to use; review it befor
 - `port`: number the proxy listens on (ex: `3000`)
 - `tenants`: array of tenant entries
 - `tenants[].name` (optional): label for logs
-- `tenants[].host` (optional): hostname to match (ex: `api-mobile.proxy.myapp.com`)
+- `tenants[].host` (optional): hostname to match (ex: `api-mobile.proxy.myapp.com`); do not include scheme or leading `/`
 - `tenants[].path`: path prefix to mount (ex: `/api`)
 - `tenants[].proxyTarget`: upstream URL (ex: `https://example.com`)
 - `tenants[].rule`: `allow` or `deny` to control how `ipv4_addresses` is enforced
