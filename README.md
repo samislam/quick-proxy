@@ -8,6 +8,9 @@ A small reverse-proxy service driven by a YAML config file.
 2. Create a config file (see `app.config.yml`) and set `CONFIG_FILE` to its path.
 3. Run locally: `pnpm dev`
 
+Generate a fresh config file: `pnpm make-config`.
+Note: the config file is not committed for security.
+
 Production build: `pnpm build` then `pnpm start`.
 PM2: an `ecosystem.config.js` file is included and ready to use; review it before deployment.
 
@@ -23,6 +26,7 @@ PM2: an `ecosystem.config.js` file is included and ready to use; review it befor
 - `tenants[].proxyTarget`: upstream URL (ex: `https://example.com`)
 - `tenants[].rule`: `allow` or `deny` to control how `ipv4_addresses` is enforced
 - `tenants[].ipv4_addresses`: list of IPv4 addresses to allow/deny
+- Allow everything: set `tenants[].rule` to `deny` with `tenants[].ipv4_addresses: []`
 - `tenants[].trustProxy` (optional): `true` if running behind another proxy (nginx, apache)
 
 ## CI/CD integration with the project
