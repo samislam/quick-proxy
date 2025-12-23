@@ -2,7 +2,7 @@
 module.exports = {
   apps: [
     {
-      name: 'aya-companies-proxy',
+      name: 'proxy',
       script: './dist/src/main.js',
       exec_mode: 'cluster',
       instances: 'max',
@@ -12,8 +12,8 @@ module.exports = {
       env: {
         NODE_ENV: 'production',
       },
-      error_file: '~/.pm2/logs/aya-companies-proxy-error.log',
-      out_file: '~/.pm2/logs/aya-companies-proxy-out.log',
+      error_file: '~/.pm2/logs/proxy-error.log',
+      out_file: '~/.pm2/logs/proxy-out.log',
       merge_logs: true,
       time: true,
     },
