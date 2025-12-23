@@ -4,10 +4,20 @@ function setup() {
   const fileContent = `# yaml-language-server: $schema=./dist/app-config.json
 host: 'localhost'
 port: 3000
-proxyTarget: 'https://google.com'
-rule: 'deny'
-ipv4_addresses:
-  - ''
+tenants:
+  - name: 'google'
+    path: '/'
+    proxyTarget: 'https://google.com'
+    rule: 'deny'
+    ipv4_addresses:
+      - '127.0.0.1'
+  - name: 'docs'
+    path: '/docs'
+    proxyTarget: 'https://example.com'
+    rule: 'allow'
+    ipv4_addresses:
+      - '127.0.0.1'
+    trustProxy: true
 `
   writeFileSync('app.config.yml', fileContent, { encoding: 'utf-8' })
 }

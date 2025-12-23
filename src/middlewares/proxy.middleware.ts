@@ -1,10 +1,9 @@
-import { getConfig } from '../server/read-config'
 import type { Request, Response } from 'express'
 import { createProxyMiddleware } from 'http-proxy-middleware'
 
-export const proxyMiddleware = () =>
+export const proxyMiddleware = (target: string) =>
   createProxyMiddleware<Request, Response>({
-    target: getConfig().proxyTarget,
+    target,
     changeOrigin: true,
     logger: console,
   })
