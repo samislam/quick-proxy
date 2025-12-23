@@ -16,7 +16,7 @@
     "start": "NODE_ENV=production node ./dist/src/main.js",
     "generateJsonSchema": "ts-json-schema-generator --path ./src/types/app-config.interface.ts --type AppConfigJsonSchema --out ./dist/app-config.json"
   },
-  "packageManager": "pnpm@10.18.1",
+  "packageManager": "pnpm@10.26.1",
   "dependencies": {
     "chalk": "^4.1.2",
     "cors": "^2.8.5",
