@@ -22,6 +22,9 @@ app.listen(port, host, () => {
   tenants.forEach((tenant) => {
     const label = tenant.name ? ` (${tenant.name})` : ''
     console.log(`Tenant${label}: ${chalk.bold(tenant.path)}`)
+    if (tenant.host) {
+      console.log(`Host: ${chalk.bold.cyanBright(tenant.host)}`)
+    }
     console.log(`Proxy Target: ${chalk.bold.magentaBright.underline(tenant.proxyTarget)}`)
     console.log(`Rule is ${chalk.bold(tenant.rule)}`)
     console.log(

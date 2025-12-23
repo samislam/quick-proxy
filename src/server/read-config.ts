@@ -20,6 +20,11 @@ function normalizePath(path: string): string {
   return path
 }
 
+function normalizeHost(host?: string): string | undefined {
+  if (!host) return undefined
+  return host.trim().toLowerCase()
+}
+
 export function getTenants(): ProxyTenantConfig[] {
   const config = getConfig()
   if (!config.tenants || config.tenants.length === 0) {
@@ -30,8 +35,12 @@ export function getTenants(): ProxyTenantConfig[] {
     const hasRequired =
       tenant.path && tenant.proxyTarget && tenant.rule && Array.isArray(tenant.ipv4_addresses)
     if (!hasRequired) throw new Error(`Invalid tenant config at index ${index}`)
+    if (tenant.host && typeof tenant.host !== 'string') {
+      throw new Error(`Invalid tenant config at index ${index}: host must be a string`)
+    }
     return {
       ...tenant,
+      host: normalizeHost(tenant.host),
       path: normalizePath(tenant.path),
     }
   })

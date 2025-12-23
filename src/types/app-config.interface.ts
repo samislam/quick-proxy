@@ -1,6 +1,8 @@
 export interface ProxyTenantConfig {
   /** Optional label for logs */
   name?: string
+  /** Optional host to match (ex: `api.example.com`) */
+  host?: string
   /** Path prefix to mount this tenant (ex: `/api`) */
   path: string
   /** The URL that you want to proxy and mirror the requests for */

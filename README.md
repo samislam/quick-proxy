@@ -22,12 +22,14 @@ PM2: an `ecosystem.config.js` file is included and ready to use; review it befor
 - `port`: number the proxy listens on (ex: `3000`)
 - `tenants`: array of tenant entries
 - `tenants[].name` (optional): label for logs
+- `tenants[].host` (optional): hostname to match (ex: `api-mobile.proxy.myapp.com`)
 - `tenants[].path`: path prefix to mount (ex: `/api`)
 - `tenants[].proxyTarget`: upstream URL (ex: `https://example.com`)
 - `tenants[].rule`: `allow` or `deny` to control how `ipv4_addresses` is enforced
 - `tenants[].ipv4_addresses`: list of IPv4 addresses to allow/deny
 - Allow everything: set `tenants[].rule` to `deny` with `tenants[].ipv4_addresses: []`
 - `tenants[].trustProxy` (optional): `true` if running behind another proxy (nginx, apache)
+If multiple tenants share the same path, set `tenants[].host` to route by hostname.
 
 ## CI/CD integration with the project
 

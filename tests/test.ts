@@ -39,6 +39,25 @@ tenants:
     })
   })
 
+  it('normalizes tenant host casing', () => {
+    const yaml = `
+host: 'localhost'
+port: 3000
+tenants:
+  - name: 'api'
+    host: 'Api-Mobile.Proxy.Aya.Sy'
+    path: '/'
+    proxyTarget: 'https://example.com'
+    rule: 'allow'
+    ipv4_addresses:
+      - '127.0.0.1'
+`
+    withConfig(yaml, () => {
+      const tenants = getTenants()
+      expect(tenants[0].host).toBe('api-mobile.proxy.aya.sy')
+    })
+  })
+
   it('throws on invalid tenant configs', () => {
     const yaml = `
 host: 'localhost'
